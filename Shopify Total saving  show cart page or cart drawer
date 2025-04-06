@@ -1,0 +1,11 @@
+{% assign total_saving = 0 %}
+{% for item in cart.items %}
+  {% if item.variant.compare_at_price > item.variant.price %}
+  	{% assign saving = item.variant.compare_at_price | minus: item.variant.price | times: item.quantity %}
+  	{% assign total_saving = saving | plus: total_saving %}
+  {% endif %}
+{% endfor %}
+
+You Saved: {{ total_saving | money }}
+        https://community.shopify.com/c/shopify-design/show-total-savings-on-cart-page-dawn-7-0-1/td-p/2098759
+https://community.shopify.com/c/technical-q-a/how-to-show-quot-total-savings-quot-on-cart-and-checkout-page/m-p/1108582
